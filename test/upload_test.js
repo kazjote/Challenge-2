@@ -14,10 +14,6 @@ var options = {
     'Content-Length': 232 } }
 
 var request = http.request(options, function(res) {
-  res.on('error', function(error) {
-    console.log(error)
-  })
-
   res.on('data', function(chunk) {
     var savedContent = fs.readFileSync(chunk.toString(), 'utf8')
     assert.equal(savedContent, 'Yum!\r\n')
