@@ -1,0 +1,4 @@
+== Dependencies
+
+ * node (ver. >= 0.4.9)
+ * formidable (npm install formidable)

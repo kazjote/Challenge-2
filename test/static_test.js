@@ -3,7 +3,7 @@ var
   assert = require('assert'),
   port = 8080
 
-options = {host: 'localhost', port: 8080, path: '/assets/fixture', method: 'GET'}
+options = {host: 'localhost', port: 8080, path: '/upload/fixture', method: 'GET'}
 
 function fetchBody(response, callback) {
   var data = ''
@@ -17,6 +17,7 @@ function fetchBody(response, callback) {
   })
 }
 
+// 200 OK
 var request = http.request(options, function(res) {
   assert.equal(res.statusCode, 200)
   fetchBody(res, function(data) {
@@ -26,7 +27,8 @@ var request = http.request(options, function(res) {
 
 request.end()
 
-options.path = '/assets/wrong'
+// 404 Not Found
+options.path = '/upload/wrong'
 request = http.request(options, function(res) {
   assert.equal(res.statusCode, 404)
 })
