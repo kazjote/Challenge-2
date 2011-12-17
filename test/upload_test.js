@@ -19,21 +19,15 @@ var request = http.request(options, function(res) {
   })
 
   res.on('data', function(chunk) {
-    console.log('data received')
-    var savedContent = fs.readFileSync(chunk)
-    assert.equal(savedContent, 'Yum!')
+    var savedContent = fs.readFileSync(chunk.toString(), 'utf8')
+    assert.equal(savedContent, 'Yum!\r\n')
   })
 
   res.on('end', function() {
-    console.log('response ended!')
     assert.equal(res.statusCode, 200)
   })
 })
 
-request.on('error', function(error) {
-  console.log('error: ' + error.message)
-})
-
-request.write(fs.readFileSync('./test/fixtures/form'))
+request.write(fs.readFileSync('./test/fixtures/form', 'utf8'))
 request.end()
 
