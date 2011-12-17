@@ -1,26 +1,19 @@
 var
   http = require('http'),
   assert = require('assert'),
+  helper = require('./helper'),
   port = 8080
 
-options = {host: 'localhost', port: 8080, path: '/upload/fixture', method: 'GET'}
-
-function fetchBody(response, callback) {
-  var data = ''
-  response.setEncoding('utf8')
-  response.on('data', function(chunk) {
-    data += chunk.toString()
-  })
-
-  response.on('end', function() {
-    callback(data)
-  })
-}
+options = {
+  host: 'localhost',
+  port: 8080,
+  path: '/upload/fixture',
+  method: 'GET' }
 
 // 200 OK
 var request = http.request(options, function(res) {
   assert.equal(res.statusCode, 200)
-  fetchBody(res, function(data) {
+  helper.fetchBody(res, function(data) {
     assert.equal(data, 'Yum!\n')
   })
 })
