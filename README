@@ -1,4 +1,9 @@
 == Dependencies
 
- * node (ver. >= 0.4.9)
+ * node (ver. 0.6.6)
  * formidable (npm install formidable)
+
+== Running
+
+  env UPLOAD_PORT=server_port node server.js
+
