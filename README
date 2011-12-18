@@ -11,3 +11,5 @@
 
   node test/static_test.js && node test/upload_test.js
 
+  Server must be running on localhost port 8080.
+
