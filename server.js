@@ -9,6 +9,7 @@ var
 
 http.createServer(function(request, response) {
   var rootPath = path.resolve('.')
+  console.log(' -> Received request ' + request.method + ' ' + request.url)
   if(request.method == 'GET') {
     static.handleRequest(request, response, rootPath, progressData)
   } else {

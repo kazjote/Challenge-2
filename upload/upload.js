@@ -11,10 +11,11 @@ $(document).ready(function() {
             $('#upload_progress').text(parsedProgress + '%')
             if(parsedProgress < 100) setTimeout(updateStatus, 1000)
           },
-          failure: function() {
+          error: function() {
             setTimeout(updateStatus, 1000)
           }
         })
+        form.hide()
       }
 
     setTimeout(updateStatus, 1000)
