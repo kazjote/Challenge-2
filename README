@@ -7,3 +7,7 @@
 
   env UPLOAD_PORT=server_port node server.js
 
+== Running testcase
+
+  node test/static_test.js && node test/upload_test.js
+
