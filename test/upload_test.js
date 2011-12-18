@@ -16,7 +16,7 @@ var options = {
 
 var request = http.request(options, function(res) {
   res.on('data', function(chunk) {
-    var savedContent = fs.readFileSync(chunk.toString(), 'utf8')
+    var savedContent = fs.readFileSync('./upload/' + chunk.toString(), 'utf8')
     assert.equal(savedContent, 'Yum!\r\n')
   })
 

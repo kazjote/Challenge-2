@@ -2,11 +2,29 @@
 <html>
   <head>
     <title>File upload</title>
+
+    <script type="text/javascript" src="/upload/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/upload/jquery.form.js"></script>
+    <script type="text/javascript" src="/upload/upload.js"></script>
   </head>
+
   <body>
-    <form action="/" method="POST" enctype="multipart/form-data">
+    <h1>File upload</h1>
+
+    <form class="file" action="/" method="POST" enctype="multipart/form-data">
       <input type="file" name="upload" />
       <input type="submit" />
     </form>
+
+    <div class="status">Progress: <span id="upload_progress">Not started</span></div>
+    <div id="path" style="display:none">Saved to: <a id="file_link"></a></div>
+
+    <form class="description" method="POST" action="/description">
+      <input type="hidden" name="path" id="path_field" />
+      <label for="description">Description</label>
+      <textarea name="description" id="description"></textarea>
+      <input type="submit" value="Save" id="submit_button" disabled="disabled" />
+    </form>
   </body>
 </html>
+
