@@ -7,6 +7,12 @@ var
   progressData = {},
   port = 8080
 
+if(process.env.UPLOAD_PORT) port = process.env.UPLOAD_PORT
+
+process.on('uncaughtException', function (err) {
+  console.log('Caught exception: ' + err);
+});
+
 http.createServer(function(request, response) {
   var rootPath = path.resolve('.')
   console.log(' -> Received request ' + request.method + ' ' + request.url)
@@ -15,7 +21,7 @@ http.createServer(function(request, response) {
   } else {
     upload.handleRequest(request, response, rootPath, progressData)
   }
-}).listen(8080)
+}).listen(port)
 
 console.log('Listening on port ' + port)
 
